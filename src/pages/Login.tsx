@@ -38,7 +38,7 @@ const Login = () => {
       const session: ILogin = await DS_auth_login(username, password);
       document.cookie = `accessToken=${session.accessToken}; max-age=${
         7 * 24 * 60 * 60
-      }; path=/`; // توکن برای 7 روز
+      }; path=/`;
       document.cookie = `refreshToken=${session.refreshToken}; max-age=${
         7 * 24 * 60 * 60
       }; path=/`;
@@ -56,23 +56,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <div>
-        <h1>Login</h1>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>Login</button>
-      </div> */}
-
       <main className="relative h-screen bg-custom-gradient gap-4 font-Vazirmatn-Medium overflow-y-auto scroll-Market flex bg-violet-600 justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-2 justify-center items-center z-20"></div>
         <div className="flex flex-col gap-8 w-[400px] justify-center items-center z-20 rounded-3xl p-4 bg-white/20">
@@ -123,11 +106,6 @@ const Login = () => {
             ورود
           </button>
         </div>
-        {/* <Image
-          className="end-0 absolute top-1/2 -translate-y-1/2 -z-10"
-          alt="rings"
-          src={bgImageRings}
-        /> */}
       </main>
     </>
   );

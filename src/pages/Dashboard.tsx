@@ -20,11 +20,10 @@ const Dashboard = () => {
       if (session.message == "Token Expired!") {
         console.log("kos");
 
-        // console.log("token expired");
         const refreshResult = await DS_auth_refresh();
         document.cookie = `accessToken=${refreshResult.accessToken}; max-age=${
           7 * 24 * 60 * 60
-        }; path=/`; // توکن برای 7 روز
+        }; path=/`;
         document.cookie = `refreshToken=${
           refreshResult.refreshToken
         }; max-age=${7 * 24 * 60 * 60}; path=/`;
