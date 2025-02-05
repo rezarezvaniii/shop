@@ -8,6 +8,7 @@ import {
 import ProductList from "./pages/ProductList";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import { Util as REPO_BASE_Util } from "./services/Repository/BASE/Util";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -28,7 +29,7 @@ function App() {
             }
           />
           <Route path="/products" element={<ProductList />} />
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/products" />} />
         </Routes>
       </Router>
     </>
@@ -36,7 +37,7 @@ function App() {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const isAuthenticated = !!localStorage.getItem("token"); // بررسی توکن
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+  const isAuthenticated = !!REPO_BASE_Util.getCookie("refreshToken");
+  return isAuthenticated ? <>{children}</> : <Navigate to="/pruducts" />;
 };
 export default App;
